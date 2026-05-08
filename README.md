@@ -10,5 +10,18 @@ struct Donor {
     int donations;
     Donor* next;
 };
+struct BSTNode {
+    string name;
+    string bloodGroup;
+    BSTNode* left;
+    BSTNode* right;
+};
+
+struct BloodRequest {
+    string patientName;
+    string bloodGroup;
+    int units;
+};
+
 
 
