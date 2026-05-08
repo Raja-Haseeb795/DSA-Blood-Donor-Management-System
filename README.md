@@ -19,8 +19,18 @@ struct BSTNode {
 
 struct BloodRequest {
     string patientName;
-    string bloodGroup;
+        string bloodGroup;
     int units;
+};
+
+class BloodDonationSystem {
+private:
+    Donor* head;
+    queue<BloodRequest> requestQueue;
+    stack<string> actionStack;
+    BSTNode* root;
+    string bloodGroups[8] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+    int stock[8];
 };
 
 
