@@ -32,6 +32,20 @@ private:
     string bloodGroups[8] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
     int stock[8];
 };
+public:
+    BloodDonationSystem() {
+        head = NULL;
+        root = NULL;
+        for (int i = 0; i < 8; i++) stock[i] = 0;
+    }
+
+    int getIndex(string bg) {
+        for (int i = 0; i < 8; i++)
+            if (bloodGroups[i] == bg) return i;
+        return -1;
+    }
+
+
 
 
 
