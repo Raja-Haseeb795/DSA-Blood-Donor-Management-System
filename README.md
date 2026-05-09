@@ -84,6 +84,28 @@ public:
             node->right = insertBST(node->right, name, bg);
         return node;
     }
+    void searchDonorBST(string name) {
+        BSTNode* temp = root;
+        while (temp != NULL) {
+            if (temp->name == name) {
+                cout << "\nDonor Found: " << temp->name
+                     << " | Blood Group: " << temp->bloodGroup << endl;
+                return;
+            }
+            temp = (name < temp->name) ? temp->left : temp->right;
+        }
+        cout << "\nDonor not found.\n";
+    }
+
+    void makeRequest(string patient, string bg, int units) {
+        BloodRequest req;
+        req.patientName = patient;
+        req.bloodGroup = bg;
+        req.units = units;
+        requestQueue.push(req);
+        actionStack.push("Blood requested by " + patient);
+        cout << "\nBlood request added to queue for patient: " << patient << endl;
+    }
 
 
 
