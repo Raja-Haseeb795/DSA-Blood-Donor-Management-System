@@ -53,6 +53,24 @@ public:
         newDonor->next = NULL;
 
     }
+            if (head == NULL)
+		 head = newDonor;
+        else {
+            Donor* temp = head;
+            while (temp->next != NULL)
+			 temp = temp->next;
+            temp->next = newDonor;
+        }
+        root = insertBST(root, name, bg);
+        actionStack.push("Added donor: " + name);
+
+        // If initial donation is given, update donor and stock
+        if (initialDonation > 0) {
+            donateBlood(name, bg, initialDonation);
+        }
+    }
+
+
 
 
 
