@@ -69,6 +69,22 @@ public:
             donateBlood(name, bg, initialDonation);
         }
     }
+	    BSTNode* insertBST(BSTNode* node, string name, string bg) {
+        if (node == NULL) {
+            BSTNode* newNode = new BSTNode;
+            newNode->name = name;
+            newNode->bloodGroup = bg;
+            newNode->left = NULL;
+            newNode->right = NULL;
+            return newNode;
+        }
+        if (name > node->name)
+            node->left = insertBST(node->left, name, bg);
+        else
+            node->right = insertBST(node->right, name, bg);
+        return node;
+    }
+
 
 
 
