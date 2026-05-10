@@ -125,6 +125,20 @@ public:
             cout <<"Insufficient stock for this blood group.\n";
         }
     }
+ void donateBlood(string name, string bg, int units) {
+        Donor* temp = head;
+        while (temp != NULL) {
+            if (temp->name == name && temp->bloodGroup == bg) {
+                temp->donations += 1;
+                int index = getIndex(bg);
+                if (index >= 0) stock[index] += units;
+                actionStack.push("Donation by " + name);
+                return;
+            }
+            temp = temp->next;
+        }
+        cout << "\nDonor not found in records.\n";
+    }
 
 
 
