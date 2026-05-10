@@ -106,6 +106,25 @@ public:
         actionStack.push("Blood requested by " + patient);
         cout << "\nBlood request added to queue for patient: " << patient << endl;
     }
+	  void processRequest(){
+        if (requestQueue.empty()){
+            cout <<"\nNo requests in queue.\n";
+            return;
+        }
+        BloodRequest req=requestQueue.front();
+        int index=getIndex(req.bloodGroup);
+        cout<<"\nProcessing Request:\n";
+        cout<<"Patient: "<< req.patientName
+            <<"| Blood Group: " << req.bloodGroup
+            <<"| Units: "<<req.units<< endl;
+        if (index >= 0 && stock[index] >= req.units) {
+            stock[index] -= req.units;
+            requestQueue.pop();
+            cout <<"Request fulfilled successfully!\n";
+        } else {
+            cout <<"Insufficient stock for this blood group.\n";
+        }
+    }
 
 
 
