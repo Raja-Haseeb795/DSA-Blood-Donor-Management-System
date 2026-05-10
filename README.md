@@ -139,6 +139,29 @@ public:
         }
         cout << "\nDonor not found in records.\n";
     }
+    void showStock() {
+        cout << "\n------ BLOOD STOCK ------\n";
+        for (int i = 0; i < 8; i++) {
+            cout << bloodGroups[i] << " : " << stock[i] << " units\n";
+        }
+    }
+
+    void showDonors() {
+        Donor* temp = head;
+        if (temp == NULL) {
+            cout << "\nNo donors found.\n";
+            return;
+        }
+        cout << "\n------ DONOR LIST ------\n";
+        while (temp != NULL) {
+            cout << "Name: " << temp->name
+                 << " | Age: " << temp->age
+                 << " | Contact: " << temp->contact
+                 << " | Blood Group: " << temp->bloodGroup
+                 << " | Donations: " << temp->donations << endl;
+            temp = temp->next;
+        }
+    }
 
 
 
