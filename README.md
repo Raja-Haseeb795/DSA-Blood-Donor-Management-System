@@ -163,6 +163,22 @@ public:
         }
     }
 
+    void undoAction() {
+        if (actionStack.empty()) {
+            cout << "\nNo actions to undo.\n";
+            return;
+        }
+        cout << "\nUndoing: " << actionStack.top() << endl;
+        actionStack.pop();
+    }
+
+    void inorderBST(BSTNode* node) {
+        if (node == NULL) return;
+        inorderBST(node->left);
+        cout << "Name: " << node->name << " | Blood Group: " << node->bloodGroup << endl;
+        inorderBST(node->right);
+    }
+
 
 
 
