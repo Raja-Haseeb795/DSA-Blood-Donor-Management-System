@@ -178,6 +178,36 @@ public:
         cout << "Name: " << node->name << " | Blood Group: " << node->bloodGroup << endl;
         inorderBST(node->right);
     }
+    void showSortedDonors() {
+        cout << "\n------ SORTED DONORS (BST) ------\n";
+        inorderBST(root);
+    }
+
+    // ===================== SIMPLE SORTING METHODS =====================
+    void sortDonorNames() {
+        int count = 0;
+        Donor* temp = head;
+        while(temp)
+		 { count++; temp = temp->next; }
+
+        string names[count];
+        temp = head;
+        for(int i=0; i<count; i++)
+		{ names[i] = temp->name; temp = temp->next; }
+
+        for(int i=1; i<count; i++){
+            string key = names[i];
+            int j = i-1;
+            while(j>=0 && names[j] > key){
+                names[j+1] = names[j];
+                j--;
+            }
+            names[j+1] = key;
+        }
+
+        cout << "\nDonors Sorted Alphabetically:\n";
+        for(int i=0; i<count; i++) cout << names[i] << endl;
+    }
 
 
 
