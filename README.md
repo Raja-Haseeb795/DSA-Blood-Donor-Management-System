@@ -208,6 +208,26 @@ public:
         cout << "\nDonors Sorted Alphabetically:\n";
         for(int i=0; i<count; i++) cout << names[i] << endl;
     }
+    void sortByDonations() {
+        int count = 0;
+        Donor* temp = head;
+        while(temp){ count++; temp = temp->next; }
+
+        Donor* donors[count];
+        temp = head;
+        for(int i=0;i<count;i++){ donors[i] = temp; temp=temp->next; }
+
+        for(int i=0;i<count-1;i++){
+            for(int j=0;j<count-i-1;j++){
+                if(donors[j]->donations < donors[j+1]->donations)
+                    swap(donors[j], donors[j+1]);
+            }
+        }
+
+        cout << "\nDonors Sorted by Donations:\n";
+        for(int i=0;i<count;i++)
+            cout << donors[i]->name << " | Donations: " << donors[i]->donations << endl;
+    }
 
 
 
