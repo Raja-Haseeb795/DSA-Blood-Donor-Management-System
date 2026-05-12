@@ -228,6 +228,33 @@ public:
         for(int i=0;i<count;i++)
             cout << donors[i]->name << " | Donations: " << donors[i]->donations << endl;
     }
+    void sortStock() {
+        int n = 8;
+        int s[n];
+        for(int i=0;i<n;i++) s[i]=stock[i];
+
+        for(int i=0;i<n-1;i++){
+            int minIdx=i;
+            for(int j=i+1;j<n;j++) if(s[j]<s[minIdx]) minIdx=j;
+            swap(s[i],s[minIdx]);
+        }
+
+        cout << "\nBlood Stock Sorted (Lowest to Highest):\n";
+        for(int i=0;i<n;i++) cout << bloodGroups[i] << " : " << s[i] << " units\n";
+    }
+
+    // ========================= MENU ==========================
+    void menu() {
+        int choice;
+        do {
+            cout << "\n===== BLOOD DONATION MANAGEMENT SYSTEM =====\n";
+            cout << "1. Add Donor\n2. Show Donors\n3. Search Donor (BST)\n";
+            cout << "4. Donate Blood\n5. Show Blood Stock\n6. Make Blood Request\n";
+            cout << "7. Process Request\n8. Undo Last Action\n9. Show Sorted Donors (BST)\n";
+            cout << "10. Sort Donor Names Alphabetically\n";
+            cout << "11. Sort Donors by Donations\n12. Sort Blood Stock\n0. Exit\n";
+            cout << "Enter your choice: ";
+            cin >> choice; cin.ignore();
 
 
 
