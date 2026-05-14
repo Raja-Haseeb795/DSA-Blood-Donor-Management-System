@@ -255,6 +255,83 @@ public:
             cout << "11. Sort Donors by Donations\n12. Sort Blood Stock\n0. Exit\n";
             cout << "Enter your choice: ";
             cin >> choice; cin.ignore();
+			            switch(choice){
+                case 1:{
+                    string name, contact, bg;
+					 int age;
+                    cout << "Enter Name: ";
+					 getline(cin,name);
+                    cout << "Enter Age: ";
+					 cin >> age;
+					  cin.ignore();
+                    cout << "Enter Contact: "; 
+					getline(cin,contact);
+                    cout << "Enter Blood Group: ";
+					 getline(cin,bg);
+                    addDonor(name,age,contact,bg); 
+					break;
+                }
+                case 2: showDonors(); break;
+                case 3:{ string name;
+				 cout << "Enter Donor Name: "; 
+				 getline(cin,name); 
+				 searchDonorBST(name); 
+				 break;}
+                case 4:{
+                    string name,bg; int units;
+                    cout << "Enter Donor Name: "; 
+					getline(cin,name);
+                    cout << "Enter Blood Group: ";
+					 getline(cin,bg);
+                    cout << "Enter Units Donated: "; 
+					cin >> units;
+					 cin.ignore();
+                    donateBlood(name,bg,units); 
+					break;
+                }
+                case 5: showStock(); break;
+                case 6:{
+                    string patient,bg; int units;
+                    cout << "Enter Patient Name: "; 
+					getline(cin,patient);
+                    cout << "Enter Blood Group: "; 
+					getline(cin,bg);
+                    cout << "Enter Units Required: "; 
+					cin >> units;
+					 cin.ignore();
+                    makeRequest(patient,bg,units);
+					 break;
+                }
+                case 7: processRequest(); break;
+                case 8: undoAction(); break;
+                case 9: showSortedDonors(); break;
+                case 10: sortDonorNames(); break;
+                case 11: sortByDonations(); break;
+                case 12: sortStock(); break;
+                case 0: cout << "\nExiting Program...\n"; break;
+                default: cout << "\nInvalid choice. Try again.\n";
+            }
+        }while(choice!=0);
+    }
+};
+
+int main() {
+    BloodDonationSystem system;
+
+    // Predefined donors with initial stock
+    system.addDonor("Zohran", 29, "555-1234", "A+", 5);
+    system.addDonor("Farrukh", 35, "555-5678", "O+", 3);
+    system.addDonor("Ali", 42, "555-8765", "B-", 2);
+    system.addDonor("ahmed", 30, "555-4321", "AB+", 4);
+    system.addDonor("Haseeb", 38, "555-9876", "O-", 6);
+
+    // Interactive menu
+    system.menu();
+    return 0;
+}
+
+
+
 
 
 
